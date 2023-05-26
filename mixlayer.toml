@@ -1,0 +1,20 @@
+name = "mxl-multisource"
+
+[sources.square]
+type = "graphql"
+url = "https://connect.squareup.com/alpha/graphql"
+query = "square.graphql"
+type_prefix = "SQ"
+
+[[sources.square.headers]]
+name = "Authorization"
+secret = "Bearer [TOKEN]"
+
+[sources.bigcommerce]
+type = "graphql"
+url = "https://gottagofast.galaxy.lol/graphql"
+query = "bigcommerce.graphql"
+
+[[sources.bigcommerce.headers]]
+name = "Authorization"
+secret = "Bearer [TOKEN]"

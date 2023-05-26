@@ -1,0 +1,99 @@
+query {
+  catalogVariations: catalog(
+    filter: {
+      merchantId: { equalToAnyOf: ["7GJQYRS20KY2F"] }
+      type: { equalToAnyOf: [ITEM_VARIATION] }
+    }
+  ) @unrollConnection(globalNode: false) {
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+    nodes {
+      __typename
+      id
+      version
+      isDeleted
+      updatedAt
+      absentAt {
+        id
+      }
+      presentAt {
+        id
+      }
+
+      ... on CatalogItemVariation {
+        name
+        sku
+      }
+    }
+  }
+  catalogItems: catalog(
+    filter: {
+      merchantId: { equalToAnyOf: ["7GJQYRS20KY2F"] }
+      type: { equalToAnyOf: [ITEM] }
+    }
+  ) @unrollConnection(globalNode: false) {
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+    nodes {
+      __typename
+      id
+      version
+      isDeleted
+      updatedAt
+      absentAt {
+        id
+      }
+      presentAt {
+        id
+      }
+      ... on CatalogItem {
+        abbreviation
+        availableElectronically
+        availableForPickup
+        availableOnline
+        category {
+          id
+        }
+        description
+        images {
+          id
+          url
+        }
+        options {
+          id
+          name
+        }
+        labelColor
+        modifierListInfos {
+          modifierList {
+            id
+          }
+          enabled
+          maxSelectedModifiers
+          minSelectedModifiers
+          modifierOverrides {
+            modifier {
+              id
+            }
+            onByDefault
+          }
+        }
+        name
+        productType
+        skipModifierScreen
+        taxes {
+          id
+          name
+        }
+        variations {
+          id
+          name
+        }
+      }
+    }
+  }
+}
